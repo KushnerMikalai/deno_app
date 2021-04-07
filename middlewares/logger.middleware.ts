@@ -6,6 +6,7 @@ const { env } = configs;
 await setup({
   handlers: {
     functionFmt: new handlers.ConsoleHandler("DEBUG", {
+      // deno-lint-ignore no-explicit-any
       formatter: (logRecord: any) => {
         const time = new Date().toISOString();
         let msg = `${time} [${logRecord.level}] ${logRecord.msg}`;

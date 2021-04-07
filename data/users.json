@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Vicky Gonsalves",
+    "email": "vicky.gonsalves@outlook.com",
+    "password": "111111",
+    "role": "admin",
+    "isDisabled": false
+  },
+  {
+    "name": "Nick Kush",
+    "email": "kushner.of.by@yandex.ru",
+    "password": "123456",
+    "role": "user",
+    "isDisabled": false
+  }
+]

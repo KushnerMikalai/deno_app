@@ -9,7 +9,7 @@ import log from "./logger.middleware.ts";
  * @throws Error Throws Error
  */
 export const throwError = (options: Err): Error => {
-    throw options;
+  throw options;
 };
 
 /**
@@ -19,30 +19,30 @@ export const throwError = (options: Err): Error => {
  * @returns Promise<void>
  */
 export const errorHandler = async (
-    ctx: Context,
-    next: () => Promise<void>,
+  ctx: Context,
+  next: () => Promise<void>,
 ): Promise<void> => {
-    try {
-        await next();
-    } catch (err) {
-        let message = err.message;
-        const name = err.name;
-        const path = err.path;
-        const type = err.type;
-        const status = err.status || err.statusCode || Status.InternalServerError;
+  try {
+    await next();
+  } catch (err) {
+    let message = err.message;
+    const name = err.name;
+    const path = err.path;
+    const type = err.type;
+    const status = err.status || err.statusCode || Status.InternalServerError;
 
-        const { env } = configs;
-        if (!isHttpError(err)) {
-            message = env === "dev" || env === "development"
-                ? message
-                : "Internal Server Error";
-        }
-
-        if (env === "dev" || env === "development") {
-            log.debug(err);
-        }
-
-        ctx.response.status = status;
-        ctx.response.body = { message, name, path, type, status };
+    const { env } = configs;
+    if (!isHttpError(err)) {
+      message = env === "dev" || env === "development"
+        ? message
+        : "Internal Server Error";
     }
+
+    if (env === "dev" || env === "development") {
+      log.debug(err);
+    }
+
+    ctx.response.status = status;
+    ctx.response.body = { message, name, path, type, status };
+  }
 };
