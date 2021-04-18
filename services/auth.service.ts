@@ -22,8 +22,8 @@ class AuthService {
     { email, password }: { email: string; password: string },
   ): Promise<LoginStructure | Error> {
     const user: UserSchema | undefined = await User.findOne(
-      // @ts-ignore
       { email, isDisabled: false },
+      // @ts-ignore
       { noCursorTimeout: false },
     );
     if (
