@@ -1,0 +1,16 @@
+POST http://localhost:9000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "vicky.gonsalves@outlook.com",
+  "password": "111111"
+}
+
+###
+
+POST http://localhost:9000/api/auth/refresh-tokens
+Content-Type: application/json
+
+{
+  "refreshToken": ""
+}

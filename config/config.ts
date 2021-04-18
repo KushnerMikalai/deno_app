@@ -22,6 +22,8 @@ if (env === "development" || env === "test") {
 interface Config {
   env: string;
   jwtSecret: string;
+  jwtAccessExpiration: number;
+  jwtRefreshExpiration: number;
   host: string;
   port: number;
   key: string;
@@ -43,6 +45,8 @@ interface Config {
 const config: Config = {
   env,
   jwtSecret: envConfig.JWT_SECRET,
+  jwtAccessExpiration: Number(envConfig.JWT_ACCESS_TOKEN_EXP),
+  jwtRefreshExpiration: Number(envConfig.JWT_REFRESH_TOKEN_EXP),
   host: envConfig.HOST,
   port: Number(envConfig.PORT),
   protocol: envConfig.PROTOCOL,

@@ -79,6 +79,8 @@ class UserService {
   public static async getUser(id: string): Promise<UserStructure | Error> {
     const user: (UserSchema | undefined) = await User.findOne(
       { _id: new ObjectId(id) },
+      // @ts-ignore
+      { noCursorTimeout: false },
     );
     if (!user) {
       log.error("User not found");
